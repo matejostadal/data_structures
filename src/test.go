@@ -26,12 +26,11 @@ func main() {
 // inserts the values into an empty heap and prints it
 func binoheapPrintTest(keys []int) {
 
-	h := binomialheaps.MakeBinoHeap()
+	h := binomialheaps.MakeBinoHeap(nil)
 
 	for _, i := range keys {
 
-		node := binomialheaps.MakeBinoNode(i)
-		h.InsertNode(node)
+		h.Insert(i)
 	}
 
 	h.PrintHeap()
@@ -41,7 +40,7 @@ func binoheapPrintTest(keys []int) {
 // inserts the values into an empty heap and checks their correct order when extracting
 func binoheapsValuesTest(keys []int) {
 
-	h := binomialheaps.MakeBinoHeap()
+	h := binomialheaps.MakeBinoHeap(nil)
 
 	for _, i := range keys {
 

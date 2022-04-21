@@ -46,16 +46,6 @@ ROOT R2
 	...
 */
 
-func MakeBinoHeap() *BinomialHeap {
-	h := &BinomialHeap{}
-	return h
-}
-
-func MakeBinoNode(value int) *BinomialNode {
-	n := &BinomialNode{Key: value}
-	return n
-}
-
 // inserts new node with a given key
 func (h *BinomialHeap) Insert(value int) {
 
@@ -66,7 +56,7 @@ func (h *BinomialHeap) Insert(value int) {
 // inserts node to the heap
 func (h *BinomialHeap) InsertNode(x *BinomialNode) {
 
-	h1 := &BinomialHeap{head: x}
+	h1 := MakeBinoHeap(x)
 	h2 := h
 
 	h.head = union(h1, h2) // the heap is set to its union with h1
@@ -261,7 +251,7 @@ func reverseChildren(orig_root *BinomialNode) *BinomialHeap {
 		x = x_right
 	}
 
-	return &BinomialHeap{head: last_node}
+	return MakeBinoHeap(last_node)
 }
 
 // connects node y as a child of z
@@ -297,4 +287,14 @@ func printNode(x *BinomialNode, space string) {
 
 	fmt.Printf(space+"NODE: key: %d, degree: %d, child: %p, parent: %p \n", x.Key, x.degree, x.child, x.parent)
 
+}
+
+func MakeBinoHeap(head *BinomialNode) *BinomialHeap {
+	h := &BinomialHeap{head: head}
+	return h
+}
+
+func MakeBinoNode(value int) *BinomialNode {
+	n := &BinomialNode{Key: value}
+	return n
 }
